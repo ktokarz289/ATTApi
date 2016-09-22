@@ -1,0 +1,29 @@
+﻿<div id="body">
+    <table id="books" class="table">
+        <thead>
+            <tr>
+                <th>Title:</th>
+                <th>Author:</th>
+                <th>Rating:</th>
+                <th>Description:</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function()
+        {
+                $.getJSON('/api/book', function(booksJson)
+                {
+                    $(booksJson).each(function(i, item)
+                    {
+                        $('#books').append('<tr><td>' + item.Title + '</td><td>' + item.Author + '</td><td>' + item.Rating + '</td><td>' + item.Description + '</td></tr>');
+                    });
+                });
+        });
+    </script>
+}
+
+
